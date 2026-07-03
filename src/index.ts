@@ -2855,6 +2855,14 @@ export function tsPlugin(options?: {
 
 				if (bodilessType && !this.match(tt.braceL) && this.isLineTerminator()) {
 					this.exitScope();
+					if (this.isAmbientContext && node.id) {
+						const scope = this.currentScope();
+						this.maybeExportDefined(scope, node.id.name);
+						const topLevelNames = this.scopeStack[0].lexical;
+						if (!topLevelNames.includes(node.id.name)) {
+							topLevelNames.push(node.id.name);
+						}
+					}
 					return this.finishNode(node, bodilessType);
 				}
 				if (bodilessType === 'TSDeclareFunction' && this.isAmbientContext) {
