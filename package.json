@@ -1,6 +1,6 @@
 {
 	"name": "@nag5000/acorn-typescript",
-	"version": "1.0.11",
+	"version": "1.0.12",
 	"description": "Acorn plugin that parses TypeScript",
 	"type": "module",
 	"types": "index.d.ts",
